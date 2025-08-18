@@ -80,11 +80,14 @@ body{
 
 .card-text-1{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 5px 0px 5px;
 }
 
 .card{
-    height: 21rem !important;
-    width: 18rem !important;
+    height: 17rem !important;
+    width: 16rem !important;
 }
 
 .card-body{
