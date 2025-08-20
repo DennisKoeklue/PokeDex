@@ -49,7 +49,7 @@ body{
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
-    max-height: 850px;
+    max-height: 786px;
     overflow-y: auto;
 
 }
@@ -88,8 +88,8 @@ body{
 }
 
 .card{
-    height: 17rem !important;
-    width: 16rem !important;
+    height: 15rem !important;
+    width: 15rem !important;
 }
 
 .card-body{
