@@ -47,7 +47,7 @@ body{
     width: 100%;
     padding: 11px;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 20px;
     justify-content: center;
     max-height: 850px;
     overflow-y: auto;

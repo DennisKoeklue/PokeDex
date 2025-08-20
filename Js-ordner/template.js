@@ -2,7 +2,7 @@ function templateRender(i) {
     return`
     <div class="card">
     <div class="card-text-1">
-    <h5 class="card-title">${pokemons[i].id}</h5>
+    <h5 class="card-title">#${pokemons[i].id}</h5>
     <h5 class="card-title">${pokemons[i].name}</h5>
     </div>
     <div class="selector"></div>
