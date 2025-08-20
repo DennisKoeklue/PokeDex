@@ -7,7 +7,7 @@ const TYPE_COLORS = {
 
 
     let offset = 0;
-  const limit = 10;
+  const limit = 20;
   let pokemons = [];
 
 
@@ -30,10 +30,14 @@ async function Init() {
   }
 
 function renderTest() {
-     for (let i = 0; i < pokemons.length; i++) {
-    console.log(pokemons[i].id);
-    
-    
+  let renderContain = document.getElementById('render-container');
+  if (renderContain) {
+    renderContain.innerHTML = "";
+    for (let i = 0; i < pokemons.length; i++) {
+      renderContain.innerHTML += templateRender(i);
+    }
+  } else {
+    console.error('Element #render-container nicht gefunden!');
   }
  }
 
