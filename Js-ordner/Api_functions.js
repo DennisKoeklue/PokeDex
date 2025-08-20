@@ -13,7 +13,7 @@ const TYPE_COLORS = {
 
 async function Init() {
    await loadPokemon()
-    renderTest()
+    renderPokemon()
 }
 
   async function loadPokemon() {
@@ -29,7 +29,7 @@ async function Init() {
     return pokemons
   }
 
-function renderTest() {
+function renderPokemon() {
   let renderContain = document.getElementById('render-container');
   if (renderContain) {
     renderContain.innerHTML = "";
