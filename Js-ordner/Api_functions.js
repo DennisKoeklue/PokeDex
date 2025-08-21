@@ -1,10 +1,3 @@
-const TYPE_COLORS = {
-      grass: "#78C850", fire: "#F08030", water: "#6890F0", bug: "#A8B820", normal: "#A8A878",
-      poison: "#A040A0", electric: "#F8D030", ground: "#E0C068", fairy: "#EE99AC", fighting: "#C03028",
-      psychic: "#F85888", rock: "#B8A038", ghost: "#705898", ice: "#98D8D8", dragon: "#7038F8",
-      dark: "#705848", steel: "#B8B8D0", flying: "#A890F0"
-    };
-
 
     let offset = 0;
   const limit = 20;
@@ -17,16 +10,41 @@ async function Init() {
 }
 
   async function loadPokemon() {
+    try {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
+
+      if (!res.ok) {
+      console.error(`HTTP Fehler: ${res.status} ${res.statusText}`);
+      return [];
+    }
+
     const data = await res.json();
 
+    if (!Array.isArray(data.results)) {
+  console.error("Unerwartete API-Antwort:", data);
+  return [];
+}
+
     const details = await Promise.all(
-      data.results.map(p => fetch(p.url).then(r => r.json()))
+      data.results.map(p =>
+        fetch(p.url)
+          .then(r => r.json())
+          .catch(err => {
+            console.error(`Fehler beim Laden von ${p.name}:`, err);
+            return null;
+          })
+      )
     );
-    pokemons = pokemons.concat(details);
+
+    pokemons = pokemons.concat(details.filter(Boolean));
     offset += limit;
-    return pokemons
+    return pokemons;
+
+  } catch (error) {
+    console.error("Fehler beim Laden der Pokémon:", error);
+    return [];
+  }
   }
 
 function renderPokemon() {
@@ -41,3 +59,8 @@ function renderPokemon() {
   }
  }
 
+document.getElementById('load-more-btn').addEventListener('click', async () =>{
+  await loadPokemon()
+  renderPokemon()
+})
+ 
