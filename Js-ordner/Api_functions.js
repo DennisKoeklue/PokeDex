@@ -10,7 +10,7 @@ async function Init() {
 }
 
   async function loadPokemon() {
-    try {
+  try {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
 
