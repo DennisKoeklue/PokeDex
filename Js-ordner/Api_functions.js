@@ -47,12 +47,12 @@ async function Init() {
   }
   }
 
-function renderPokemon() {
+function renderPokemon(pokemonList = pokemons) {
   let renderContain = document.getElementById('render-container');
   if (renderContain) {
     renderContain.innerHTML = "";
-    for (let i = 0; i < pokemons.length; i++) {
-      renderContain.innerHTML += templateRender(i);
+    for (let i = 0; i < pokemonList.length; i++) {
+      renderContain.innerHTML += templateRender(pokemonList[i]);
     }
   } else {
     console.error('Element #render-container nicht gefunden!');
@@ -63,4 +63,28 @@ document.getElementById('load-more-btn').addEventListener('click', async () =>{
   await loadPokemon()
   renderPokemon()
 })
+
+document.getElementById('search-input').addEventListener('input', function(event) {
+  searchPokemon(event.target.value);
+})
+
+function searchPokemon(searchTerm) {
+  const trimmedTerm = searchTerm.trim().toLowerCase();
+
+  if (trimmedTerm.length === 0) {
+  renderPokemon();
+  return;
+}
+
+if (trimmedTerm.length < 3) {
+  return;
+}
+
+ const filteredPokemons = pokemons.filter(pokemon =>
+    pokemon.name.toLowerCase().includes(trimmedTerm)
+  );
+
+  renderPokemon(filteredPokemons);
+
+}
  
