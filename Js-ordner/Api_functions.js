@@ -59,9 +59,11 @@ function renderPokemon(pokemonList = pokemons) {
       renderContain.innerHTML += templateRender(pokemonList[i]);
     }
 
-    document.getElementById("load-screen").style.display = "none";
-        renderContain.style.display = "flex";
-        document.querySelector(".load-more").style.display = "flex";
+    setTimeout(() => {
+      document.getElementById("load-screen").style.display = "none";
+      renderContain.style.display = "flex";
+      document.querySelector(".load-more").style.display = "flex";
+    }, 2500);
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
