@@ -11,6 +11,10 @@ async function Init() {
 
   async function loadPokemon() {
   try {
+    document.getElementById("load-screen").style.display = "flex";
+    document.getElementById("render-container").style.display = "none";
+    document.querySelector(".load-more").style.display = "none"; 
+
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
 
@@ -54,6 +58,10 @@ function renderPokemon(pokemonList = pokemons) {
     for (let i = 0; i < pokemonList.length; i++) {
       renderContain.innerHTML += templateRender(pokemonList[i]);
     }
+
+    document.getElementById("load-screen").style.display = "none";
+        renderContain.style.display = "flex";
+        document.querySelector(".load-more").style.display = "flex";
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
