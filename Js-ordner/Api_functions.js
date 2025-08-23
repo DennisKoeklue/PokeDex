@@ -83,10 +83,12 @@ function searchPokemon(searchTerm) {
 
   if (trimmedTerm.length === 0) {
   renderPokemon();
+  document.querySelector(".load-more").style.display = "flex"
   return;
 }
 
 if (trimmedTerm.length < 3) {
+  document.querySelector(".load-more").style.display = "none"
   return;
 }
 
