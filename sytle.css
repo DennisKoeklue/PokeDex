@@ -10,7 +10,7 @@ body{
 }
 
 .overlay-div{
-    display: flex;
+    display: none;
     position: fixed;
     top: 0px;
     right: 0;

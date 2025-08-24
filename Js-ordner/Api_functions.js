@@ -1,5 +1,5 @@
 
-    let offset = 0;
+  let offset = 0;
   const limit = 20;
   let pokemons = [];
 
@@ -65,7 +65,7 @@ function renderPokemon(pokemonList = pokemons) {
       if (document.getElementById('search-input').value.trim() === '') {
         document.querySelector(".load-more").style.display = "flex";
       }
-    }, 2500);
+    }, 3000);
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
