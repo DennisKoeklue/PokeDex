@@ -30,14 +30,15 @@ function templateOverlay(pokemon) {
   let typ = pokemon.types.map(t => t.type.name).join(', ');
   let maintype = pokemon.types[0].type.name;
   return`
-    <div class="card card2" onclick="event.stopPropagation()">
-    <div class="card-text-1">
+   <div class="card card2" onclick="event.stopPropagation()">
+    <div class="card-text-1 card-overly-text">
         <h5 class="card-title">${pokemon.id}</h5>
         <h5 class="card-title">${pokemonNameuppercase}</h5>
+        <button type="button" class="btn-close" aria-label="Close" onclick="closeOverlay()"></button>
     </div>
     <div class="selector"></div>
     <div class="poke-img-container-overlay bg_${maintype}">
-        <img src="${pokemon.sprites.front_default}" class="card-img-top-overlay" alt="${pokemon.name}">
+        <img src="${pokemon.sprites.front_default}" class="card-img-top-overlay" alt="${pokemonNameuppercase}">
     </div>
     <div class="selector"></div>
     <div class="type-div">
@@ -45,7 +46,7 @@ function templateOverlay(pokemon) {
     </div>
     <div class="selector"></div>
 
-  
+
     <ul class="nav nav-pills" id="pokemonTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="item1-tab" href="#item1">Main</a>
@@ -58,6 +59,7 @@ function templateOverlay(pokemon) {
         </li>
     </ul>
 
+    <!-- Tab Content (card-body) -->
     <div class="tab-content" id="pokemonTabsContent">
         <div class="tab-pane fade show active" id="item1">
             <p>Content for An item</p>
