@@ -32,7 +32,7 @@ function templateOverlay(pokemon) {
   return`
    <div class="card card2" onclick="event.stopPropagation()">
     <div class="card-text-1 card-overly-text">
-        <h5 class="card-title">${pokemon.id}</h5>
+        <h5 class="card-title">#${pokemon.id}</h5>
         <h5 class="card-title">${pokemonNameuppercase}</h5>
         <button type="button" class="btn-close" aria-label="Close" onclick="closeOverlay()"></button>
     </div>
