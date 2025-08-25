@@ -6,7 +6,7 @@ function templateRender(pokemon) {
 
 
     return`
-    <div class="card" onclick="templateOverlay(${pokemon.id})" id ="${pokemon.id}">
+    <div class="card" onclick="overlayRender(${pokemon.id})" id ="${pokemon.id}">
     <div class="card-text-1">
     <h5 class="card-title">#${pokemon.id}</h5>
     <h5 class="card-title">${pokemonNameuppercase}</h5>
