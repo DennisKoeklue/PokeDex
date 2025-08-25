@@ -95,13 +95,19 @@ body{
     width: 40px;
 }
 
-
+.card-title{
+    margin: 0 !important;
+    margin-bottom: 0 !important;
+}
 
 .card-text-1{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 5px 0px 5px;
+}
+.card-overly-text{
+    padding: 10px !important;
 }
 
 .card{
@@ -110,6 +116,7 @@ body{
     border-style: solid !important;
     border-width: 2px !important;
     border-color: black !important;
+    cursor: pointer;
 
 }
 

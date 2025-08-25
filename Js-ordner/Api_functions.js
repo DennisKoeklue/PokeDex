@@ -2,6 +2,18 @@
   let offset = 0;
   const limit = 20;
   let pokemons = [];
+  const funFacts = [
+    "Pikachu war ursprünglich nicht der Hauptcharakter, sondern Clefairy.",
+    "Pikachu kommt von „Pika“ (Elektrizität) und „Chu“ (Maus).",
+    "Charizard ist anfällig für Wasser, aber Torkoal nicht.",
+    "Mewtwo ist ein Klon von Mew, aber das wurde später erklärt.",
+    "Magikarp kann sich in Gyarados verwandeln, basierend auf einer chinesischen Legende.",
+    "MissingNo ist ein Bug-Pokémon, das in der ersten Generation auftauchte.",
+    "Mimikyu versteckt sich unter einem Pikachu-Kostüm, weil es es liebt.",
+    "Snorlax blockiert oft Wege und muss mit einer Flöte geweckt werden.",
+    "Pokémon-Designs basieren oft auf Mythologie oder realen Tieren.",
+    "Jynx hatte anfangs ein Design, das wegen rassistischer Assoziationen geändert wurde."
+];
 
 
 async function Init() {
@@ -129,5 +141,11 @@ function overlayRender(pokemonID) {
    
   Overlay.innerHTML = templateOverlay(pokemon)
   Overlay.style.display = "flex"
+}
+
+
+function getRandomFact() {
+    const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
+    console.log(randomFact);
 }
  
