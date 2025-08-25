@@ -101,4 +101,33 @@ if (trimmedTerm.length < 3) {
   renderPokemon(filteredPokemons);
 
 }
+
+//Erstmal als test da lassen 
+// Funktion zum Schließen des Overlays
+function closeOverlay(event) {
+  const overlay = document.getElementById('overlay-div');
+  overlay.style.display = 'none';
+}
+
+// Wenn auf das Overlay außerhalb der Karte geklickt wird, Overlay schließen
+document.getElementById('overlay-div').addEventListener('click', closeOverlay);
+
+// Stoppe das Bubbling nur innerhalb der Karte
+document.querySelector('.card2').addEventListener('click', function(event) {
+  event.stopPropagation(); // Verhindert das Schließen des Overlays
+});
+
+function overlayRender(pokemonID) {
+  const Overlay = document.getElementById(`overlay-div`)
+
+  const pokemon = pokemons.find(p => p.id === pokemonID)
+
+  if (!pokemon) {
+    console.error("Pokémon mit ID " + pokemonID + " nicht gefunden.");
+    return;
+  }
+   
+  Overlay.innerHTML = templateOverlay(pokemon)
+  Overlay.style.display = "flex"
+}
  

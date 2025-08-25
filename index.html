@@ -14,8 +14,8 @@
 </head>
 <body onload="Init()">
     <main class="main-content container-fluid">
-        <div class="overlay-div" id="overlay-div">
-            <div class="card card2">
+        <div class="overlay-div" id="overlay-div" onclick="closeOverlay()">
+            <div class="card card2" onclick="event.stopPropagation()">
     <div class="card-text-1">
         <h5 class="card-title">#10</h5>
         <h5 class="card-title">Glurak</h5>
