@@ -167,7 +167,7 @@ function setAktiv(element) {
 
 }
 
-function showDetail() {
+function showDetail(id) {
   let alldivs = document.querySelectorAll(`.tab-pane`);
 
   for (let i = 0; i < alldivs.length; i++) {
@@ -176,5 +176,6 @@ function showDetail() {
         
         }
 
-        element.classList.add('show active');
+        document.getElementById(id).classList.add('show'); //ds : Main , Stats , Evo_Chain
+        document.getElementById(id).classList.add('active')
 }
