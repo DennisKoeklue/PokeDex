@@ -49,10 +49,10 @@ function templateOverlay(pokemon) {
 
     <ul class="nav nav-pills" id="pokemonTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active id="item1-tab" href="#item1" onclick ="setAktiv(this)">Main</a>
+            <a class="nav-link active id="item1-tab" href="#Main" onclick ="setAktiv(this)">Main</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="item2-tab" href="#item2" onclick ="setAktiv(this)">Stats</a>
+            <a class="nav-link" id="item2-tab" href="#Stats" onclick ="setAktiv(this)">Stats</a>
         </li>
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="item3-tab" href="#item3" onclick ="setAktiv(this)">Evo Chain</a>
@@ -61,13 +61,13 @@ function templateOverlay(pokemon) {
 
     <!-- Tab Content (card-body) -->
     <div class="tab-content" id="pokemonTabsContent">
-        <div class="tab-pane fade show active" id="item1">
+        <div class="tab-pane fade show active" id="Main">
             <p>Content for An item</p>
         </div>
-        <div class="tab-pane fade" id="item2">
+        <div class="tab-pane fade" id="Stats">
             <p>Content for A second item</p>
         </div>
-        <div class="tab-pane fade" id="item3">
+        <div class="tab-pane fade" id="Evo_Chain<">
             <p>Content for A third item</p>
         </div>
     </div>
