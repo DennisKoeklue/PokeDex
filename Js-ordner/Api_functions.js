@@ -149,3 +149,32 @@ function getRandomFact() {
     console.log(randomFact);
 }
  
+
+function setAktiv(element) {
+    // Schritt 1: Hol alle <a>-Tags in der Sidebar
+    let allLinks = document.querySelectorAll('.nav a');
+    
+
+    // Schritt 2: Entferne bei allen Links die "active"-Klasse. mit for geht er alle links durch.
+    for (let i = 0; i < allLinks.length; i++) {
+        allLinks[i].classList.remove('active');
+        }
+
+        
+    // Schritt 3: Füge dem aktuell geklickten Link die "active"-Klasse hinzu
+    element.classList.add('active')
+    //showDetail()
+
+}
+
+function showDetail() {
+  let alldivs = document.querySelectorAll(`.tab-pane`);
+
+  for (let i = 0; i < alldivs.length; i++) {
+        alldivs[i].classList.remove('show');
+        alldivs[i].classList.remove('active')
+        
+        }
+
+        element.classList.add('show active');
+}
