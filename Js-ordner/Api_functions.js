@@ -172,7 +172,7 @@ function showDetail() {
 
   for (let i = 0; i < alldivs.length; i++) {
         alldivs[i].classList.remove('show');
-        alldivs[i].classList.remove('active')
+        alldivs[i].classList.remove('active');
         
         }
 
