@@ -112,3 +112,11 @@ function templateAbilities(abilities, i) {
     <span>${abilitiesUpper}</span>
     `
 }
+
+function randomFunFakts() {
+    return`
+    <div>
+    
+    </div>
+    `
+}
