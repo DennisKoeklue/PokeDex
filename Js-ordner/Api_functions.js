@@ -23,6 +23,7 @@ async function Init() {
 
   async function loadPokemon() {
   try {
+    getRandomFact()
     document.getElementById("load-screen").style.display = "flex";
     document.getElementById("render-container").style.display = "none";
     document.querySelector(".load-more").style.display = "none"; 
@@ -77,7 +78,7 @@ function renderPokemon(pokemonList = pokemons) {
       if (document.getElementById('search-input').value.trim() === '') {
         document.querySelector(".load-more").style.display = "flex";
       }
-    }, 3000);
+    }, 3500);
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
@@ -153,8 +154,9 @@ function overlayRender(pokemonID) {
 
 
 function getRandomFact() {
+    const FunFakts_div = document.getElementById('funfakts-input')
     const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
-    console.log(randomFact);
+    FunFakts_div.innerHTML = randomFunFakts(randomFact)
 }
  
 

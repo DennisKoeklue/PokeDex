@@ -113,10 +113,8 @@ function templateAbilities(abilities, i) {
     `
 }
 
-function randomFunFakts() {
+function randomFunFakts(randomFact) {
     return`
-    <div>
-    
-    </div>
+    ${randomFact}
     `
 }
