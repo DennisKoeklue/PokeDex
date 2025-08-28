@@ -131,16 +131,24 @@ document.querySelector('.card2').addEventListener('click', function(event) {
 
 function overlayRender(pokemonID) {
   const Overlay = document.getElementById(`overlay-div`)
+  
 
   const pokemon = pokemons.find(p => p.id === pokemonID)
+  let abilities = pokemon.abilities.map(a => a.ability.name)
 
   if (!pokemon) {
     console.error("Pokémon mit ID " + pokemonID + " nicht gefunden.");
     return;
   }
-   
+  
   Overlay.innerHTML = templateOverlay(pokemon)
   Overlay.style.display = "flex"
+  
+  const abilities_div = document.getElementById(`abilities_infos`)
+  for (let index = 0; index < abilities.length; index++) {
+    
+    abilities_div.innerHTML += templateAbilities(abilities, index)
+  }
 }
 
 

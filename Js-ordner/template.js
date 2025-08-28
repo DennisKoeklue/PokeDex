@@ -49,13 +49,13 @@ function templateOverlay(pokemon) {
 
     <ul class="nav nav-pills" id="pokemonTabs" role="tablist">
         <li class="nav-item" role="presentation">
-            <a class="nav-link active id="item1-tab" href="#Main" onclick ="showDetail('Main'); setAktiv(this)">Main</a>
+            <a class="nav-link active id="item1-tab" onclick ="showDetail('Main'); setAktiv(this)">Main</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="item2-tab" href="#Stats" onclick ="showDetail('Stats'); setAktiv(this)">Stats</a>
+            <a class="nav-link" id="item2-tab" onclick ="showDetail('Stats'); setAktiv(this)">Stats</a>
         </li>
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id="item3-tab" href="#item3" onclick ="showDetail('Evo_Chain'); setAktiv(this)">Evo Chain</a>
+            <a class="nav-link" id="item3-tab" onclick ="showDetail('abilities_names'); setAktiv(this)">Abilities</a>
         </li>
     </ul>
 
@@ -66,11 +66,14 @@ function templateOverlay(pokemon) {
             <span>Name :</span>
             <span>Height :</span>
             <span>Weight :</span>
+            <span>Weight :</span>
             </div>
              <div class = "main_number" id = "main_number">
             <span>${pokemonNameuppercase}</span>
             <span>${pokemon.height}</span>
             <span>${pokemon.weight}</span>
+            <span>${pokemon.weight}</span>
+
             </div>
         </div>
         <div class="tab-pane fade" id="Stats">
@@ -81,6 +84,7 @@ function templateOverlay(pokemon) {
             <span>Special-Attack :</span>
             <span>Special-Defends :</span>
             <span>Speed :</span>
+            <span>Base experience :</span>
             </div>
              <div class = "stats_number" id = "stats_number">
             <span>${pokemon.stats[0].base_stat}</span>
@@ -89,11 +93,22 @@ function templateOverlay(pokemon) {
             <span>${pokemon.stats[3].base_stat}</span>
             <span>${pokemon.stats[4].base_stat}</span>
             <span>${pokemon.stats[5].base_stat}</span>
+            <span>${pokemon.base_experience}</span>
             </div>
         </div>
-        <div class="tab-pane fade" id="Evo_Chain">
-            <p>Content for A third item</p>
+        <div class="tab-pane fade" id="abilities_names">
+             <div class = "abilities_infos" id = "abilities_infos">
+            
+            </div>
         </div>
     </div>
 </div>`
+}
+
+function templateAbilities(abilities, i) {
+    let abilitiesLower = abilities[i]
+    let abilitiesUpper = abilitiesLower.charAt(0).toUpperCase() + abilitiesLower.slice(1).toLowerCase();
+    return`
+    <span>${abilitiesUpper}</span>
+    `
 }
