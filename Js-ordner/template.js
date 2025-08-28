@@ -62,10 +62,34 @@ function templateOverlay(pokemon) {
     <!-- Tab Content (card-body) -->
     <div class="tab-content" id="pokemonTabsContent">
         <div class="tab-pane fade show active" id="Main">
-            <p>Content for An item</p>
+            <div class = "main_stats" id = "main_stats">
+            <span>Name :</span>
+            <span>Height :</span>
+            <span>Weight :</span>
+            </div>
+             <div class = "main_number" id = "main_number">
+            <span>${pokemonNameuppercase}</span>
+            <span>${pokemon.height}</span>
+            <span>${pokemon.weight}</span>
+            </div>
         </div>
         <div class="tab-pane fade" id="Stats">
-            <p>Content for A second item</p>
+            <div class = "stats" id = "stats">
+            <span>HP :</span>
+            <span>Attack :</span>
+            <span>Defense :</span>
+            <span>Special-Attack :</span>
+            <span>Special-Defends :</span>
+            <span>Speed :</span>
+            </div>
+             <div class = "stats_number" id = "stats_number">
+            <span>${pokemon.stats[0].base_stat}</span>
+            <span>${pokemon.stats[1].base_stat}</span>
+            <span>${pokemon.stats[2].base_stat}</span>
+            <span>${pokemon.stats[3].base_stat}</span>
+            <span>${pokemon.stats[4].base_stat}</span>
+            <span>${pokemon.stats[5].base_stat}</span>
+            </div>
         </div>
         <div class="tab-pane fade" id="Evo_Chain">
             <p>Content for A third item</p>
