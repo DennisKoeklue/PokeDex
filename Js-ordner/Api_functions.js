@@ -102,7 +102,7 @@ function searchPokemon(searchTerm) {
   return;
 }
 
-if (trimmedTerm.length < 3) {
+if (trimmedTerm.length > 3) {
   document.querySelector(".load-more").style.display = "none"
   return;
 }
@@ -110,6 +110,11 @@ if (trimmedTerm.length < 3) {
  const filteredPokemons = pokemons.filter(pokemon =>
     pokemon.name.toLowerCase().includes(trimmedTerm)
   );
+  
+  if (Array.isArray(filteredPokemons && filteredPokemons.length === 0 )) {
+    console.log("Das Array is null");
+    
+  }
 
   renderPokemon(filteredPokemons);
 
