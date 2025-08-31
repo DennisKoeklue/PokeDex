@@ -66,12 +66,10 @@ function templateOverlay(pokemon) {
             <span>Name :</span>
             <span>Height :</span>
             <span>Weight :</span>
-            <span>Weight :</span>
             </div>
              <div class = "main_number" id = "main_number">
             <span>${pokemonNameuppercase}</span>
             <span>${pokemon.height}</span>
-            <span>${pokemon.weight}</span>
             <span>${pokemon.weight}</span>
 
             </div>

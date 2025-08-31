@@ -117,7 +117,7 @@ function searchPokemon(searchTerm) {
   return;
 }
 
-if (trimmedTerm.length > 3) {
+if (trimmedTerm.length >= 3) {
   document.querySelector(".load-more").style.display = "none"
 
    const filteredPokemons = pokemons.filter(pokemon =>
