@@ -305,7 +305,7 @@ body{
 .load-more{
     width: 100%;
     height: 45px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
