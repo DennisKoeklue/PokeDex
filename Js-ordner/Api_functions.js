@@ -93,12 +93,6 @@ function renderPokemon(pokemonList = pokemons) {
   }
  }
 
-//document.getElementById('load-more-btn').addEventListener('click', async () =>{
-  //await loadPokemon()
-  //displayOffset += 20
-//  renderPokemon()
-//})
-
 async function loadmore() {
   displayOffset += 20
   renderPokemon()
