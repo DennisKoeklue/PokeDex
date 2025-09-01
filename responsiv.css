@@ -1,0 +1,29 @@
+@media (max-width: 480px) {
+    .search-input{
+        width: 130px !important;
+    }
+    h2{
+        font-size: calc(1rem + .9vw);
+    }
+
+    .left-content{
+        flex-direction: row-reverse;
+        gap: 20px !important;
+    }
+}
+
+@media (max-width: 370px) {
+    .header-img{
+        display: none !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .footer-font{
+        font-size: 15px !important;
+    }
+
+    .header-right-img{
+        display: none;
+    }
+}

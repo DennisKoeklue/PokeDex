@@ -80,6 +80,10 @@ body{
     align-items: center;
 }
 
+.search-input{
+width: 218px;
+}
+
 .color-section{
     flex: 1;
     display: flex;
@@ -431,3 +435,4 @@ body{
 .none_pointer{
     cursor: default;
 }
+
