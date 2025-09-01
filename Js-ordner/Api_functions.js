@@ -78,7 +78,7 @@ function renderPokemon(pokemonList = pokemons) {
       if (document.getElementById('search-input').value.trim() === '') {
         document.querySelector(".load-more").style.display = "flex";
       }
-    }, 3500);
+    }, 1);
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
