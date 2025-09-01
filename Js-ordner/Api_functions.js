@@ -1,7 +1,6 @@
 
   let offset = 0;
   const limit = 20;
-  let displayOffset = 0;
   let pokemons = [];
   const funFacts = [
     "Pikachu war ursprünglich nicht der Hauptcharakter, sondern Clefairy.",
@@ -19,7 +18,6 @@
 
 async function Init() {
    await loadPokemon()
-   displayOffset = 20
     renderPokemon()
 }
 
@@ -30,15 +28,8 @@ async function Init() {
     document.getElementById("render-container").style.display = "none";
     document.querySelector(".load-more").style.display = "none"; 
 
-    // liest wie viele Pokemons es wirklick in der Api ist 
-  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=1`);
-  const info = await response.json();
-  const total = info.count;
-
-
-    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${total}&offset=0`;
+    const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
-  
 
       if (!res.ok) {
       console.error(`HTTP Fehler: ${res.status} ${res.statusText}`);
@@ -77,7 +68,7 @@ function renderPokemon(pokemonList = pokemons) {
   let renderContain = document.getElementById('render-container');
   if (renderContain) {
     renderContain.innerHTML = "";
-    for (let i = 0; i < displayOffset && i < pokemonList.length; i++) {
+    for (let i = 0; i < pokemonList.length; i++) {
       renderContain.innerHTML += templateRender(pokemonList[i]);
     }
 
@@ -87,16 +78,16 @@ function renderPokemon(pokemonList = pokemons) {
       if (document.getElementById('search-input').value.trim() === '') {
         document.querySelector(".load-more").style.display = "flex";
       }
-    }, 10);
+    }, 3500);
   } else {
     console.error('Element #render-container nicht gefunden!');
   }
  }
 
-async function loadmore() {
-  displayOffset += 20
+document.getElementById('load-more-btn').addEventListener('click', async () =>{
+  await loadPokemon()
   renderPokemon()
-}
+})
 
 document.getElementById('search-input').addEventListener('input', function(event) {
   searchPokemon(event.target.value);
@@ -111,10 +102,12 @@ function searchPokemon(searchTerm) {
   return;
 }
 
-if (trimmedTerm.length >= 3) {
+if (trimmedTerm.length > 3) {
   document.querySelector(".load-more").style.display = "none"
+  return;
+}
 
-   const filteredPokemons = pokemons.filter(pokemon =>
+ const filteredPokemons = pokemons.filter(pokemon =>
     pokemon.name.toLowerCase().includes(trimmedTerm)
   );
   
@@ -124,11 +117,6 @@ if (trimmedTerm.length >= 3) {
   }
 
   renderPokemon(filteredPokemons);
-
-  return;
-}
-
-
 
 }
 

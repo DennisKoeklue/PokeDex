@@ -48,7 +48,7 @@ body{
     width: 100%;
     height: 100%;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 }
 
 .stats_number{
@@ -56,7 +56,7 @@ body{
     width: 100%;
     height: 100%;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 }
 
 .abilities_infos{
@@ -78,10 +78,6 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.search-input{
-width: 218px;
 }
 
 .color-section{
@@ -240,7 +236,6 @@ width: 218px;
   border-radius: 8px !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
   max-width: 35rem !important;
-  margin: 10px;
 }
 
 .type-div{
@@ -310,7 +305,7 @@ width: 218px;
 .load-more{
     width: 100%;
     height: 45px;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
@@ -432,8 +427,3 @@ width: 218px;
         transform: rotateY(360deg);
     }
 }
-
-.none_pointer{
-    cursor: default;
-}
-
