@@ -42,7 +42,7 @@ try {
 
     const data = await res.json();
 
-    if (!Array.isArray(data.results)) {
+    if (!data.results || !Array.isArray(data.results)) {
   console.error("Unerwartete API-Antwort:", data);
   return [];
 }
@@ -69,23 +69,27 @@ try {
   }
 
 function renderPokemon(pokemonList = pokemons) {
-  let renderContain = document.getElementById('render-container');
-  if (renderContain) {
-      renderContain.innerHTML = "";
-    for (let i = 0; i < pokemonList.length; i++) {
-      renderContain.innerHTML += templateRender(pokemonList[i]);
-    }
+   const renderContain = document.getElementById('render-container');
 
-    setTimeout(() => {
-      document.getElementById("load-screen").style.display = "none";
-      renderContain.style.display = "flex";
-      if (document.getElementById('search-input').value.trim() === '') {
-        document.querySelector(".load-more").style.display = "flex";
-      }
-    }, 1);
-  } else {
+  if (!renderContain) {
     console.error('Element #render-container nicht gefunden!');
+    return;
   }
+
+  //HTML zwischenspeichern – besser für Performance
+  const html = pokemonList.map(templateRender).join('');
+  renderContain.innerHTML = html;
+
+  //Ladebildschirm ausblenden & Content anzeigen
+  setTimeout(() => {
+    document.getElementById("load-screen").style.display = "none";
+    renderContain.style.display = "flex";
+
+    // Zeige "Load More"-Button nur, wenn nicht gesucht wird
+    if (document.getElementById('search-input').value.trim() === '') {
+      document.querySelector(".load-more").style.display = "flex";
+    }
+  }, 1);
  }
 
 document.getElementById('load-more-btn').addEventListener('click', async () =>{
