@@ -17,6 +17,7 @@
 
 let isLoading = false;
 let allLoaded = false;
+let debounceTimeout;
 
 
 async function Init() {
@@ -100,7 +101,7 @@ document.getElementById('search-input').addEventListener('input', function(event
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
     searchPokemon(event.target.value);
-  }, 300);
+  }, 10);
 })
 
 function searchPokemon(searchTerm) {
