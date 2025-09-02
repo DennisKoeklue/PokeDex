@@ -105,34 +105,35 @@ document.getElementById('search-input').addEventListener('input', function(event
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {
     searchPokemon(event.target.value);
-  }, 10);
+  }, 150);
 })
 
 function searchPokemon(searchTerm) {
   const trimmedTerm = searchTerm.trim().toLowerCase();
+  //const noResultsDiv = document.getElementById("div name");
 
-  if (trimmedTerm.length === 0) {
-  renderPokemon();
-  document.querySelector(".load-more").style.display = "flex"
-  return;
-}
-
-if (trimmedTerm.length > 3) {
-  document.querySelector(".load-more").style.display = "none"
-  return;
-}
-
- const filteredPokemons = pokemons.filter(pokemon =>
-    pokemon.name.toLowerCase().includes(trimmedTerm)
-  );
-  
-  if (Array.isArray(filteredPokemons && filteredPokemons.length === 0 )) {
-    console.log("Das Array is null");
-    
+  if (trimmedTerm.length < 3) {
+    renderPokemon(); // zeige wieder alle Pokémon
+    document.querySelector(".load-more").style.display = "flex";
+    //noResultsDiv.style.display = "none";
+    return;
   }
 
-  renderPokemon(filteredPokemons);
+  // sucht ab 3 Zeichen aktiv
+  const filteredPokemons = pokemons.filter(pokemon =>
+    pokemon.name.toLowerCase().includes(trimmedTerm)
+  );
 
+  if (filteredPokemons.length === 0) {
+    renderPokemon([]);
+    //Hier div für sie meldung das er nichts gefunden hat anzeigen
+  } else {
+    renderPokemon(filteredPokemons);
+    //Hier div für sie meldung das er nichts gefunden hat entfernen
+  }
+
+  // Bei aktivem Suchfilter immer "Load More" ausblenden
+  document.querySelector(".load-more").style.display = "none";
 }
 
 //Erstmal als test da lassen 
