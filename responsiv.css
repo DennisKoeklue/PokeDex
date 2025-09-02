@@ -12,7 +12,7 @@
     }
 }
 
-@media (max-width: 370px) {
+@media (max-width: 417px) {
     .header-img{
         display: none !important;
     }

@@ -130,10 +130,7 @@ function closeOverlay(event) {
 // Wenn auf das Overlay außerhalb der Karte geklickt wird, Overlay schließen
 document.getElementById('overlay-div').addEventListener('click', closeOverlay);
 
-// Stoppe das Bubbling nur innerhalb der Karte
-document.querySelector('.card2').addEventListener('click', function(event) {
-  event.stopPropagation(); // Verhindert das Schließen des Overlays
-});
+
 
 function overlayRender(pokemonID) {
   const Overlay = document.getElementById(`overlay-div`)
