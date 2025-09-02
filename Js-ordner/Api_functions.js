@@ -15,6 +15,9 @@
     "Jynx hatte anfangs ein Design, das wegen rassistischer Assoziationen geändert wurde."
 ];
 
+let isLoading = false;
+let allLoaded = false;
+
 
 async function Init() {
    await loadPokemon()
@@ -22,7 +25,7 @@ async function Init() {
 }
 
   async function loadPokemon() {
-  try {
+try {
     getRandomFact()
     document.getElementById("load-screen").style.display = "flex";
     document.getElementById("render-container").style.display = "none";
@@ -67,7 +70,7 @@ async function Init() {
 function renderPokemon(pokemonList = pokemons) {
   let renderContain = document.getElementById('render-container');
   if (renderContain) {
-    renderContain.innerHTML = "";
+      renderContain.innerHTML = "";
     for (let i = 0; i < pokemonList.length; i++) {
       renderContain.innerHTML += templateRender(pokemonList[i]);
     }
@@ -85,12 +88,19 @@ function renderPokemon(pokemonList = pokemons) {
  }
 
 document.getElementById('load-more-btn').addEventListener('click', async () =>{
-  await loadPokemon()
-  renderPokemon()
+if (isLoading) return;  // Falls schon laden läuft, ignoriere Klick
+
+  isLoading = true;
+  await loadPokemon();
+  renderPokemon();
+  isLoading = false;
 })
 
 document.getElementById('search-input').addEventListener('input', function(event) {
-  searchPokemon(event.target.value);
+  clearTimeout(debounceTimeout);
+  debounceTimeout = setTimeout(() => {
+    searchPokemon(event.target.value);
+  }, 300);
 })
 
 function searchPokemon(searchTerm) {
