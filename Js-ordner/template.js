@@ -30,7 +30,7 @@ function templateOverlay(pokemon) {
   let typ = pokemon.types.map(t => t.type.name).join(', ');
   let maintype = pokemon.types[0].type.name;
   return`
-   <div class="card card2" onclick="event.stopPropagation()">
+   <div class="card card2 cursor_default" onclick="event.stopPropagation()">
     <div class="card-text-1 card-overly-text">
         <h5 class="card-title">#${pokemon.id}</h5>
         <h5 class="card-title">${pokemonNameuppercase}</h5>
@@ -102,6 +102,13 @@ function templateOverlay(pokemon) {
             </div>
         </div>
     </div>
+    <div class="arrowDiv">
+                <div onclick = "arrowLeft(${pokemon.id})" class="leftArrowDiv">
+                    <img  class="leftArrowImg" src="./IconsAndImg/arrow.png" alt="">
+                </div>
+                <div onclick = "arrowRight(${pokemon.id})" class="rightArrowDiv">
+                    <img class="rightArrowImg" src="./IconsAndImg/arrow.png" alt="">
+                </div>
 </div>`
 }
 

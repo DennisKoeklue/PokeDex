@@ -207,3 +207,28 @@ function showDetail(id) {
         document.getElementById(id).classList.add('show'); //ds : Main , Stats , Evo_Chain
         document.getElementById(id).classList.add('active')
 }
+
+
+function arrowRight(i) {
+    if (i < pokemons.length) {
+        i++;
+    }
+    else{
+        i=1;
+    }
+    overlayRender(i);
+}
+
+
+// The same as the "arrowRight" function
+function arrowLeft(i) {
+    if (i > 1) {
+        i--;
+    }
+    else{
+        
+        i = pokemons.length
+    }
+    overlayRender(i);
+}
+
