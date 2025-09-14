@@ -28,26 +28,19 @@ async function Init() {
   async function loadPokemon() {
 try {
     getRandomFact()
-    document.getElementById("load-screen").style.display = "flex";
-    document.getElementById("render-container").style.display = "none";
-    document.querySelector(".load-more").style.display = "none"; 
-
+    loadScreen()
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
-
-      if (!res.ok) {
+    if (!res.ok) {
       console.error(`HTTP Fehler: ${res.status} ${res.statusText}`);
       return [];
     }
-
-    const data = await res.json();
-
-    if (!data.results || !Array.isArray(data.results)) {
+  const data = await res.json();
+  if (!data.results || !Array.isArray(data.results)) {
   console.error("Unerwartete API-Antwort:", data);
   return [];
 }
-
-    const details = await Promise.all(
+const details = await Promise.all(
       data.results.map(p =>
         fetch(p.url)
           .then(r => r.json())
@@ -57,8 +50,7 @@ try {
           })
       )
     );
-
-    pokemons = pokemons.concat(details.filter(Boolean));
+   pokemons = pokemons.concat(details.filter(Boolean));
     offset += limit;
     return pokemons;
 
@@ -232,3 +224,8 @@ function arrowLeft(i) {
     overlayRender(i);
 }
 
+function loadScreen() {
+  document.getElementById("load-screen").style.display = "flex";
+    document.getElementById("render-container").style.display = "none";
+    document.querySelector(".load-more").style.display = "none"; 
+}
