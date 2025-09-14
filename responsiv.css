@@ -1,6 +1,6 @@
 @media (max-width: 480px) {
-    .search-input{
-        width: 130px !important;
+    #search-input{
+        width: 150px !important;
     }
     h2{
         font-size: calc(1rem + .9vw);
@@ -25,5 +25,11 @@
 
     .header-right-img{
         display: none;
+    }
+}
+
+@media (max-width: 350px){
+    #search-input{
+        width: 130px !important;
     }
 }
