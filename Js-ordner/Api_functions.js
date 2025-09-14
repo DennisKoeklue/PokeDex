@@ -19,7 +19,6 @@ let isLoading = false;
 let allLoaded = false;
 let debounceTimeout;
 
-
 async function Init() {
    await loadPokemon()
     renderPokemon()
@@ -67,17 +66,12 @@ function renderPokemon(pokemonList = pokemons) {
     console.error('Element #render-container nicht gefunden!');
     return;
   }
-
-  //HTML zwischenspeichern – besser für Performance
   const html = pokemonList.map(templateRender).join('');
   renderContain.innerHTML = html;
 
-  //Ladebildschirm ausblenden & Content anzeigen
   setTimeout(() => {
     document.getElementById("load-screen").style.display = "none";
     renderContain.style.display = "flex";
-
-    // Zeige "Load More"-Button nur, wenn nicht gesucht wird
     if (document.getElementById('search-input').value.trim() === '') {
       document.querySelector(".load-more").style.display = "flex";
     }
@@ -85,8 +79,7 @@ function renderPokemon(pokemonList = pokemons) {
  }
 
 document.getElementById('load-more-btn').addEventListener('click', async () =>{
-if (isLoading) return;  // Falls schon laden läuft, ignoriere Klick
-
+if (isLoading) return;
   isLoading = true;
   await loadPokemon();
   renderPokemon();
@@ -105,13 +98,12 @@ function searchPokemon(searchTerm) {
   //const noResultsDiv = document.getElementById("div name");
 
   if (trimmedTerm.length < 3) {
-    renderPokemon(); // zeige wieder alle Pokémon
+    renderPokemon();
     document.querySelector(".load-more").style.display = "flex";
     //noResultsDiv.style.display = "none";
     return;
   }
 
-  // sucht ab 3 Zeichen aktiv
   const filteredPokemons = pokemons.filter(pokemon =>
     pokemon.name.toLowerCase().includes(trimmedTerm)
   );
@@ -124,26 +116,19 @@ function searchPokemon(searchTerm) {
     //Hier div für sie meldung das er nichts gefunden hat entfernen
   }
 
-  // Bei aktivem Suchfilter immer "Load More" ausblenden
   document.querySelector(".load-more").style.display = "none";
 }
 
-//Erstmal als test da lassen 
-// Funktion zum Schließen des Overlays
 function closeOverlay(event) {
   const overlay = document.getElementById('overlay-div');
   overlay.style.display = 'none';
 }
 
-// Wenn auf das Overlay außerhalb der Karte geklickt wird, Overlay schließen
 document.getElementById('overlay-div').addEventListener('click', closeOverlay);
-
-
 
 function overlayRender(pokemonID) {
   const Overlay = document.getElementById(`overlay-div`)
   
-
   const pokemon = pokemons.find(p => p.id === pokemonID)
   let abilities = pokemon.abilities.map(a => a.ability.name)
 
@@ -154,7 +139,7 @@ function overlayRender(pokemonID) {
   
   Overlay.innerHTML = templateOverlay(pokemon)
   Overlay.style.display = "flex"
-  
+
   const abilities_div = document.getElementById(`abilities_infos`)
   for (let index = 0; index < abilities.length; index++) {
     
@@ -171,20 +156,13 @@ function getRandomFact() {
  
 
 function setAktiv(element) {
-    // Schritt 1: Hol alle <a>-Tags in der Sidebar
     let allLinks = document.querySelectorAll('.nav a');
     
-
-    // Schritt 2: Entferne bei allen Links die "active"-Klasse. mit for geht er alle links durch.
     for (let i = 0; i < allLinks.length; i++) {
         allLinks[i].classList.remove('active');
         }
 
-        
-    // Schritt 3: Füge dem aktuell geklickten Link die "active"-Klasse hinzu
     element.classList.add('active')
-    //showDetail()
-
 }
 
 function showDetail(id) {
@@ -193,13 +171,10 @@ function showDetail(id) {
   for (let i = 0; i < alldivs.length; i++) {
         alldivs[i].classList.remove('show');
         alldivs[i].classList.remove('active');
-        
         }
-
-        document.getElementById(id).classList.add('show'); //ds : Main , Stats , Evo_Chain
+        document.getElementById(id).classList.add('show');
         document.getElementById(id).classList.add('active')
 }
-
 
 function arrowRight(i) {
     if (i < pokemons.length) {
@@ -211,8 +186,6 @@ function arrowRight(i) {
     overlayRender(i);
 }
 
-
-// The same as the "arrowRight" function
 function arrowLeft(i) {
     if (i > 1) {
         i--;
