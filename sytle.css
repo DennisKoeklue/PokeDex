@@ -458,3 +458,19 @@ body{
         transform: rotateY(360deg);
     }
 }
+
+.noResultsDiv{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.noResultsDivText{
+    font-size: 30px;
+    color: rgb(234, 6, 6);
+    background-color: white;
+    
+}

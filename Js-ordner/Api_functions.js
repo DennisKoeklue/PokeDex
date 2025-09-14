@@ -95,12 +95,12 @@ document.getElementById('search-input').addEventListener('input', function(event
 
 function searchPokemon(searchTerm) {
   const trimmedTerm = searchTerm.trim().toLowerCase();
-  //const noResultsDiv = document.getElementById("div name");
+  const noResultsDiv = document.getElementById("noResultsDiv");
 
   if (trimmedTerm.length < 3) {
     renderPokemon();
     document.querySelector(".load-more").style.display = "flex";
-    //noResultsDiv.style.display = "none";
+    noResultsDiv.style.display = "none";
     return;
   }
 
@@ -110,10 +110,10 @@ function searchPokemon(searchTerm) {
 
   if (filteredPokemons.length === 0) {
     renderPokemon([]);
-    //Hier div für sie meldung das er nichts gefunden hat anzeigen
+    noResultsDiv.style.display = "flex";
   } else {
     renderPokemon(filteredPokemons);
-    //Hier div für sie meldung das er nichts gefunden hat entfernen
+    noResultsDiv.style.display = "none";
   }
 
   document.querySelector(".load-more").style.display = "none";
