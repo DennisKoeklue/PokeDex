@@ -25,39 +25,54 @@ async function Init() {
 }
 
   async function loadPokemon() {
-try {
-    getRandomFact()
-    loadScreen()
+    try {
+        getRandomFact();
+        loadScreen();
+
+        const data = await fetchPokemonList();
+        const details = await fetchPokemonDetails(data.results);
+
+        pokemons = pokemons.concat(details);
+        offset += limit;
+        return pokemons;
+    } catch (error) {
+        console.error("Fehler beim Laden der Pokémon:", error);
+        return [];
+    }
+}
+
+async function fetchPokemonList() {
     const apiUrl = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     const res = await fetch(apiUrl);
-    if (!res.ok) {
-      console.error(`HTTP Fehler: ${res.status} ${res.statusText}`);
-      return [];
-    }
-  const data = await res.json();
-  if (!data.results || !Array.isArray(data.results)) {
-  console.error("Unerwartete API-Antwort:", data);
-  return [];
-}
-const details = await Promise.all(
-      data.results.map(p =>
-        fetch(p.url)
-          .then(r => r.json())
-          .catch(err => {
-            console.error(`Fehler beim Laden von ${p.name}:`, err);
-            return null;
-          })
-      )
-    );
-   pokemons = pokemons.concat(details.filter(Boolean));
-    offset += limit;
-    return pokemons;
 
-  } catch (error) {
-    console.error("Fehler beim Laden der Pokémon:", error);
-    return [];
-  }
-  }
+    if (!res.ok) {
+        console.error(`HTTP Fehler: ${res.status} ${res.statusText}`);
+        return { results: [] };
+    }
+
+    const data = await res.json();
+    if (!data.results || !Array.isArray(data.results)) {
+        console.error("Unerwartete API-Antwort:", data);
+        return { results: [] };
+    }
+
+    return data;
+}
+
+async function fetchPokemonDetails(results) {
+    const details = await Promise.all(
+        results.map(p =>
+            fetch(p.url)
+                .then(r => r.json())
+                .catch(err => {
+                    console.error(`Fehler beim Laden von ${p.name}:`, err);
+                    return null;
+                })
+        )
+    );
+    return details.filter(Boolean);
+}
+
 
 function renderPokemon(pokemonList = pokemons) {
    const renderContain = document.getElementById('render-container');
