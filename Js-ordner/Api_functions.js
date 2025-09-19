@@ -103,24 +103,27 @@ if (isLoading) return;
 
 document.getElementById('search-input').addEventListener('input', function(event) {
   clearTimeout(debounceTimeout);
-  debounceTimeout = setTimeout(() => {
-    searchPokemon(event.target.value);
-  }, 150);
-})
-
-function searchPokemon(searchTerm) {
-  const trimmedTerm = searchTerm.trim().toLowerCase();
-  const noResultsDiv = document.getElementById("noResultsDiv");
-
-  if (trimmedTerm.length < 3) {
+  const searchTerm = event.target.value.trim().toLowerCase();
+  
+  if (searchTerm.length < 3) {
     renderPokemon();
     document.querySelector(".load-more").style.display = "flex";
     noResultsDiv.style.display = "none";
     return;
   }
 
+  debounceTimeout = setTimeout(() => {
+    searchPokemon(searchTerm);
+
+  }, 150);
+
+
+})
+
+function searchPokemon(searchTerm) {
+  const noResultsDiv = document.getElementById("noResultsDiv");
   const filteredPokemons = pokemons.filter(pokemon =>
-    pokemon.name.toLowerCase().includes(trimmedTerm)
+    pokemon.name.toLowerCase().includes(searchTerm)
   );
 
   if (filteredPokemons.length === 0) {
