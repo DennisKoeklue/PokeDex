@@ -116,8 +116,6 @@ document.getElementById('search-input').addEventListener('input', function(event
     searchPokemon(searchTerm);
 
   }, 150);
-
-
 })
 
 function searchPokemon(searchTerm) {
