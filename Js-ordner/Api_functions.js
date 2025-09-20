@@ -73,7 +73,6 @@ async function fetchPokemonDetails(results) {
     return details.filter(Boolean);
 }
 
-
 function renderPokemon(pokemonList = pokemons) {
    const renderContain = document.getElementById('render-container');
 
@@ -163,14 +162,12 @@ function overlayRender(pokemonID) {
   }
 }
 
-
 function getRandomFact() {
     const FunFakts_div = document.getElementById('funfakts-input')
     const randomFact = funFacts[Math.floor(Math.random() * funFacts.length)];
     FunFakts_div.innerHTML = randomFunFakts(randomFact)
 }
  
-
 function setAktiv(element) {
     let allLinks = document.querySelectorAll('.nav a');
     
